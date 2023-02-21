@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Калькулятор</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Выполнил: Михайлов Д.</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <p style="margin-bottom: 20px;"><b>Калькулятор, который будет находить 4 билета:</b></p>
+            <form action="">
+                <div class="form-input">
+                    <label for="a">А</label>
+                    <input type="text" name="" id="a">
+                </div>
+                <div class="form-input">
+                    <label for="b">B</label>
+                    <input type="text" name="" id="b">
+                </div>
+                <div class="form-input">
+                    <label for="c">С</label>
+                    <input type="text" name="" id="c">
+                </div>
+                <fieldset>
+                    <legend>Выбирите способ:</legend>
+                    <div id="Figures">
+                        <div>
+                            <input type="radio" name="fig" value="square" checked="checked">
+                            <label for="Square">S и P квадрата</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="fig" value="rectangle">
+                            <label for="rectangle">S и P прямоугольника</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="fig" value="circle">
+                            <label for="circle">S и L окружности</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="fig" value="triangle">
+                            <label for="triangle">S треугольника</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <button class="calc">Вычислить</button>
+                <button type="reset" class="resetBtn">Сбросить</button>
+                <p>Периметр: <span class="perimeterValue"></span></p>
+                <p>Площадь: <span class="squareValue"></span></p>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
+    <script>
+        const calcSquareP = (a, b) => {
+            return Number(a) + Number(a) + Number(b) + Number(b);
+        }
+        const calcSquareS = (a, b) => {
+            return Number(a) * Number(b);
+        }
+
+        const calcRectangleP = (a) => {
+            return Number(a) * Number(a);
+        }
+        const calcRectangleS = (a, b) => {
+            return (Number(a) + Number(b)) * 2;
+        }
+
+        const calcCircleP = (a) => {
+            return Number(a) * Number(a);
+        }
+        const calcCircleS = (a, b) => {
+            return (Number(a) + Number(b)) * 2;
+        }
+
+        const calcTriangleP = (a) => {
+            return Number(a) * Number(a);
+        }
+        const calcTriangleS = (a, b) => {
+            return (Number(a) + Number(b)) * 2;
+        }
+
+        const calcBtn = document.querySelector('.calc');
+
+        const Sum1 = document.querySelector('.perimeterValue');
+        const Sum2 = document.querySelector('.squareValue');
+
+        calcBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const fig = document.querySelectorAll('input[name="fig"]')
+            const a = document.querySelector('#a').value;
+            const b = document.querySelector('#b').value;
+            const c = document.querySelector('#c').value;
+            if (!a) {
+                alert('Введите длину ребра А');
+            } else if (!b) {
+                alert('Введите длину ребра B');
+            } else if (!c) {
+                alert('Введите длину ребра C');
+            } else {
+
+                for (const f of fig) {
+                    if (f.checked) {
+                        if (f.value == "square") {
+                            Sum1.textContent = calcSquareP(a, b);
+                            Sum2.textContent = calcSquareS(a, b);;
+                        } else if (f.value == "rectangle") {
+                            Sum1.textContent = calcSquareP(a, b);
+                            Sum2.textContent = calcSquareS(a, b);;
+                        } else if (f.value == "circle") {
+                            Sum1.textContent = calcSquareP(a, b);
+                            Sum2.textContent = calcSquareS(a, b);;
+                        } else if (f.value == "triangle") {
+                            Sum1.textContent = calcSquareP(a, b);
+                            Sum2.textContent = calcSquareS(a, b);;
+                        }
+                    }
+                }
+            }
+        })
+
+        const resetBtn = document.querySelector('.resetBtn');
+        resetBtn.addEventListener('click', () => {
+            squareValue.textContent = '';
+            perimterValue.textContent = '';
+        })
+    </script>
+</body>
+
+</html>
